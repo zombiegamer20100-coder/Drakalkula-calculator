@@ -1,6 +1,6 @@
-#include <iostream>
-using namespace std;
-int main ()
+#include <iostream>                                                     //to do: make language selector, upgrade to cont. calc.
+using namespace std;                                                    //upgrade to multi-number calc,upgrade to scient. calc.
+int main ()                                                             //ADD MENU TOP PTIORITY
 {
     float br1, br2;
     char op;
