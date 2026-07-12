@@ -1,30 +1,37 @@
 #include <iostream>                                                     //to do: make language selector, upgrade to cont. calc.
 using namespace std;                                                    //upgrade to multi-number calc,upgrade to scient. calc.
 int main ()                                                             //ADD MENU TOP PTIORITY
-{ //test test branch test here haha
+{ 
     float br1, br2;
     char op;
-    cout << "Unesi prvi i drugi broj" << endl;
-    cin >> br1 >> br2;
-    cout << "Unesi operator" <<endl;
-    cin >> op;
-    switch(op){
-    case '+':
-    cout << br1 << " + " << br2 << " = " << br1 + br2;
+    char menu;
+    cout << "Dobrodosao u divni drakulin kalkulator\n\nValjda znas kako radi menu\n\n1.Sabiranje\n2.Oduzimanje\n3.Mnozenje\n4.Deljenje\n5.Exit/Back" << endl;
+    cin >> menu;
+    switch(menu){
+      case '1':
+      cout << "Unesi brojeve koje zelis da saberes." << endl;
+      cin >> br1 >> br2;
+      cout << br1 << "+" << br2 << "=" << br1 + br2;
       break;
 
-    case '-':
+      case '2':
+      cout << "Unesi brojeve koje zelis da oduzmes." << endl;
+      cin >> br1 >> br2;
       cout << br1 << " - " << br2 << " = " << br1 - br2;
       break;
 
-    case '*':
+    case '3':
+    cout << "Unesi brojeve koje zelis da pomnozis." << endl;
+      cin >> br1 >> br2;
       cout << br1 << " * " << br2 << " = " << br1 * br2;
       break;
 
-    case '/':
+    case '4':
+    cout << "Unesi brojeve koje zelis da podelis." << endl;
+      cin >> br1 >> br2;
     if (br2==0)
     {
-      cout << "Ne sme se deliti sa nulom!" << endl;
+      cout << "Ne sme se deliti sa nulom pametni moj." << endl;
       break;
     }
     else
@@ -32,10 +39,13 @@ int main ()                                                             //ADD ME
       cout << br1 << " / " << br2 << " = " << br1 / br2;
       break;
     }
+    case '5':
+    cout << "Ako ti se izlazi, izadji." << endl;
+    break;
 
     default:
-      //ako je znak koji nije +,-,* ili / pokazuje se error poruka
-      cout << "Znak ne postoji!";
+      //ovde je pre bio beskorisni komentar, sad je ovde jos beskorisniji komentar *bat sound effect*
+      cout << "Nesto si sjebo";
       break;
     }
     return 0;
