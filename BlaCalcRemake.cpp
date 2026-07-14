@@ -1,52 +1,119 @@
-#include <iostream>                                                     //to do: make language selector, upgrade to cont. calc.
-using namespace std;                                                    //upgrade to multi-number calc,upgrade to scient. calc.
-int main ()                                                             //ADD MENU TOP PTIORITY
-{ 
-    float br1, br2;
-    char op;
-    char menu;
-    cout << "Dobrodosao u divni drakulin kalkulator\n\nValjda znas kako radi menu\n\n1.Sabiranje\n2.Oduzimanje\n3.Mnozenje\n4.Deljenje\n5.Exit/Back" << endl;
-    cin >> menu;
-    switch(menu){
-      case '1':
-      cout << "Unesi brojeve koje zelis da saberes." << endl;
-      cin >> br1 >> br2;
-      cout << br1 << "+" << br2 << "=" << br1 + br2;
-      break;
+#include <iostream>
+#include <conio.h>
+using namespace std;
 
-      case '2':
-      cout << "Unesi brojeve koje zelis da oduzmes." << endl;
-      cin >> br1 >> br2;
-      cout << br1 << " - " << br2 << " = " << br1 - br2;
-      break;
+int main()
+{
+    float br1, br2, result = 0;
+    char key;
+    bool hasResult = false;
 
-    case '3':
-    cout << "Unesi brojeve koje zelis da pomnozis." << endl;
-      cin >> br1 >> br2;
-      cout << br1 << " * " << br2 << " = " << br1 * br2;
-      break;
-
-    case '4':
-    cout << "Unesi brojeve koje zelis da podelis." << endl;
-      cin >> br1 >> br2;
-    if (br2==0)
+    while (true)
     {
-      cout << "Ne sme se deliti sa nulom pametni moj." << endl;
-      break;
-    }
-    else
-    {
-      cout << br1 << " / " << br2 << " = " << br1 / br2;
-      break;
-    }
-    case '5':
-    cout << "Ako ti se izlazi, izadji." << endl;
-    break;
+        cout << "Dobrodosao u divni drakulin kalkulator\n\n";
+        cout << "Valjda znas kako radi menu\n\n";
+        cout << "1.Sabiranje\n";
+        cout << "2.Oduzimanje\n";
+        cout << "3.Mnozenje\n";
+        cout << "4.Deljenje\n";
+        cout << "5.Exit/Back\n";
+        cout << "Pritisni broj 1-5: ";
 
-    default:
-      //ovde je pre bio beskorisni komentar, sad je ovde jos beskorisniji komentar *bat sound effect*
-      cout << "Nesto si sjebo";
-      break;
+        while (!_kbhit())
+        {
+        }
+
+        key = _getch();
+        cout << key << endl;
+
+        if (key == '5')
+        {
+            cout << "Ako ti se izlazi, izadji." << endl;
+            return 0;
+        }
+
+        while (true)
+        {
+            cout << "Trenutni rezultat: " << (hasResult ? result : 0) << endl;
+            cout << "Pritisni'r' da koristiš prethodni rezultat, 'n' za novu kalkulaciju, 'e' za izlaz: ";
+            char choice;
+            cin >> choice;
+
+            if (choice == 'e')
+            {
+                break;
+            }
+
+            if (choice == 'r')
+            {
+                if (!hasResult)
+                {
+                    cout << "Nema prethodnog rezultata. Koristi 'n'." << endl;
+                    continue;
+                }
+
+                cout << "Unesi broj: ";
+                cin >> br2;
+
+                switch (key)
+                {
+                case '1':
+                    result += br2;
+                    break;
+                case '2':
+                    result -= br2;
+                    break;
+                case '3':
+                    result *= br2;
+                    break;
+                case '4':
+                    if (br2 == 0)
+                    {
+                        cout << "Ne sme se deliti sa nulom pametni moj." << endl;
+                        continue;
+                    }
+                    result /= br2;
+                    break;
+                }
+
+                hasResult = true;
+            }
+            else if (choice == 'n')
+            {
+                cout << "Unesi brojeve koje zelis da uradis." << endl;
+                cin >> br1 >> br2;
+
+                switch (key)
+                {
+                case '1':
+                    result = br1 + br2;
+                    break;
+                case '2':
+                    result = br1 - br2;
+                    break;
+                case '3':
+                    result = br1 * br2;
+                    break;
+                case '4':
+                    if (br2 == 0)
+                    {
+                        cout << "Ne sme se deliti sa nulom pametni moj." << endl;
+                        continue;
+                    }
+                    result = br1 / br2;
+                    break;
+                }
+
+                hasResult = true;
+            }
+            else
+            {
+                cout << "Nesto si sjebo" << endl;
+            }
+
+            cout << result << endl;
+        }
     }
+
     return 0;
 }
