@@ -1,13 +1,11 @@
 #include <iostream>
 #include <conio.h>
 using namespace std;
-
 int main()
 {
     float br1, br2, result = 0;
     char key;
     bool hasResult = false;
-
     while (true)
     {
         cout << "Dobrodosao u divni drakulin kalkulator\n\n";
@@ -18,32 +16,26 @@ int main()
         cout << "4.Deljenje\n";
         cout << "5.Exit/Back\n";
         cout << "Pritisni broj 1-5: ";
-
         while (!_kbhit())
         {
         }
-
         key = _getch();
         cout << key << endl;
-
         if (key == '5')
         {
             cout << "Ako ti se izlazi, izadji." << endl;
             return 0;
         }
-
         while (true)
         {
             cout << "Trenutni rezultat: " << (hasResult ? result : 0) << endl;
             cout << "Pritisni'r' da koristiš prethodni rezultat, 'n' za novu kalkulaciju, 'e' za izlaz: ";
             char choice;
             cin >> choice;
-
             if (choice == 'e')
             {
                 break;
             }
-
             if (choice == 'r')
             {
                 if (!hasResult)
@@ -51,10 +43,8 @@ int main()
                     cout << "Nema prethodnog rezultata. Koristi 'n'." << endl;
                     continue;
                 }
-
                 cout << "Unesi broj: ";
                 cin >> br2;
-
                 switch (key)
                 {
                 case '1':
@@ -75,14 +65,12 @@ int main()
                     result /= br2;
                     break;
                 }
-
                 hasResult = true;
             }
             else if (choice == 'n')
             {
                 cout << "Unesi brojeve koje zelis da uradis." << endl;
                 cin >> br1 >> br2;
-
                 switch (key)
                 {
                 case '1':
@@ -103,17 +91,14 @@ int main()
                     result = br1 / br2;
                     break;
                 }
-
                 hasResult = true;
             }
             else
             {
                 cout << "Nesto si sjebo" << endl;
             }
-
             cout << result << endl;
         }
     }
-
     return 0;
 }
